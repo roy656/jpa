@@ -8,11 +8,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.*;
 import org.springframework.data.domain.Sort.Direction;
 
-
 import java.util.List;
-import java.util.Optional;
 
-import static java.time.LocalDateTime.now;
 import static org.springframework.data.domain.ExampleMatcher.GenericPropertyMatchers.endsWith;
 
 @SpringBootTest // Spring Context 를 로딩하여 Test 에 사용할수있게 하는 어노테이션
