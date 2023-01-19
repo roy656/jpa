@@ -24,7 +24,7 @@ class MemberRepositoryTest {
         List<Member> members = memberRepository.findAll(Sort.by(Direction.DESC, "name"));
 
         // id 값이 1,3,5 번 인 것만 조회
-        List<Member> members2 = memberRepository.findAllById(Lists.newArrayList(1L,3L,5L));
+        List<Member> members2 = memberRepository.findAllById(Lists.newArrayList(1L, 3L, 5L));
 
         // 여러 객체를 리스트로 저장
         Member roy = new Member("Roy", "1234@naver.com");
@@ -45,7 +45,7 @@ class MemberRepositoryTest {
 
         // ================= 페이징
         // PageRequest 는 Page 의 구현체, 0 페이지의 3개 데이터를 가져온다.
-        Page<Member> pageMembers = memberRepository.findAll(PageRequest.of(0,3));
+        Page<Member> pageMembers = memberRepository.findAll(PageRequest.of(0, 3));
         // Page 안에 이미 만들어져있는 여러 메소드들을 활용할수 있다.
         System.out.println("page : " + pageMembers);
         System.out.println("totalElements : " + pageMembers.getTotalElements());
@@ -61,7 +61,15 @@ class MemberRepositoryTest {
         Example<Member> example = Example.of(new Member("na", "personal"), marcher);
 
         memberRepository.findAll(example).forEach(System.out::println);
+    }
 
+    @Test
+    void select () {
 
+        // repository 에 필요한 형태로 선언한 query method 들을 사용
+        memberRepository.findByName("Roy");
+        memberRepository.findByEmail("roy@naver.com");
+        memberRepository.findMemberById(3L);
+        memberRepository.findMembersByEmail("mari@naver.com");
     }
 }
