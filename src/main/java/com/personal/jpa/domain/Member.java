@@ -2,6 +2,7 @@ package com.personal.jpa.domain;
 
 import lombok.*;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -23,7 +24,9 @@ public class Member {
     private String name;
     @NonNull
     private String email;
+    @Column
     private LocalDateTime createdAt;
+    @Column
     private LocalDateTime updatedAt;
 
 }
