@@ -127,7 +127,16 @@ class MemberRepositoryTest {
         memberRepository.findByName("Mark", PageRequest.of(0,2,Sort.by(Order.desc("id")))).getTotalElements();
     }
 
+    @Test
+    void enumTest() {
 
+        Member member = memberRepository.findById(1L).orElseThrow(NullPointerException::new);
+        member.setGender(Gender.MALE);
+
+        memberRepository.save(member);
+
+        memberRepository.findAll().forEach(System.out::println);
+    }
 
 
 }
