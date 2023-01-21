@@ -1,6 +1,8 @@
 package com.personal.jpa.repository;
 
 import com.personal.jpa.domain.Member;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -34,4 +36,6 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
     List<Member> findTopByNameOrderByIdDesc(String name);
     List<Member> findFirstByNameOrderByIdDescEmailAsc(String name);
     List<Member> findFirstByName(String name, Sort sort);
+
+    Page<Member> findByName(String name, Pageable pageable);
 }

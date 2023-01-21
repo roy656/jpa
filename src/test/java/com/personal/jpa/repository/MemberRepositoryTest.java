@@ -1,5 +1,6 @@
 package com.personal.jpa.repository;
 
+import com.personal.jpa.domain.Gender;
 import com.personal.jpa.domain.Member;
 import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.Test;
@@ -106,7 +107,8 @@ class MemberRepositoryTest {
         memberRepository.findByNameContains("ivi");
     }
 
-    void pagingAndSortingTesy() {
+    @Test
+    void SortingTest() {
 
         // 첫번째 Collin 을 조회
         memberRepository.findTopByName("Collin");
@@ -114,9 +116,18 @@ class MemberRepositoryTest {
         memberRepository.findTopByNameOrderByIdDesc("Collin");
         // Id 는 역순, Email 은 정순으로 정렬하여 첫번째 Roy 조회    // OrderBy 뒤에는 And 를 쓰지않고 요소를 나열함
         memberRepository.findFirstByNameOrderByIdDescEmailAsc("Roy");
-        // 위의 조건과 동일한 정렬, 검색    // Sort class 를 활용하여 추가적인 paramegter 제공
+        // 위의 조건과 동일한 정렬, 검색    // Sort class 를 활용하여 추가적인 parameter 제공
         memberRepository.findFirstByName("Roy", Sort.by(Order.desc("id"), Order.asc("email")));
-
-
     }
+
+
+    @Test
+    void pagingTest() {
+
+        memberRepository.findByName("Mark", PageRequest.of(0,2,Sort.by(Order.desc("id")))).getTotalElements();
+    }
+
+
+
+
 }
