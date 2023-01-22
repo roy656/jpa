@@ -131,11 +131,28 @@ class MemberRepositoryTest {
     void enumTest() {
 
         Member member = memberRepository.findById(1L).orElseThrow(NullPointerException::new);
-        member.setGender(Gender.MALE);
+//        member.setGender(Gender.MALE);
 
         memberRepository.save(member);
 
         memberRepository.findAll().forEach(System.out::println);
+    }
+
+    @Test
+    void listenerTest() {
+        Member member = new Member();
+        member.setEmail("1234@gmail.com");
+        member.setName("Ellie");
+
+        memberRepository.save(member);
+
+        Member member1 = memberRepository.findById(1L).orElseThrow(RuntimeException::new);
+        member1.setName("Elllllllie");
+        System.out.println(member1);
+        memberRepository.save(member1);
+
+        memberRepository.deleteById((1L));
+
     }
 
 
