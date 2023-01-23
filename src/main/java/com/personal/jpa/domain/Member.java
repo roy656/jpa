@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @RequiredArgsConstructor
 @Entity(name = "member")    // 해당 클래스가 DB 의 테이블과 mapping 됨
-@EntityListeners(value = MyEntityListener.class)
+@EntityListeners(value = {MyEntityListener.class, MemberEntityListener.class})
 @Builder
 public class Member implements Auditable{
 

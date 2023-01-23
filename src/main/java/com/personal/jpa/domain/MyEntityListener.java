@@ -1,9 +1,12 @@
 package com.personal.jpa.domain;
 
+import lombok.NoArgsConstructor;
+
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import java.time.LocalDateTime;
 
+@NoArgsConstructor
 public class MyEntityListener {
 
     @PrePersist

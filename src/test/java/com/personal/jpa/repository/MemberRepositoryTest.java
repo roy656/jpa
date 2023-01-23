@@ -19,6 +19,8 @@ class MemberRepositoryTest {
 
     @Autowired
     private MemberRepository memberRepository;
+    @Autowired
+    private MemberHistoryRepository memberHistoryRepository;
 
     @Test
     void crud() {
@@ -152,6 +154,22 @@ class MemberRepositoryTest {
         memberRepository.save(member1);
 
         memberRepository.deleteById((1L));
+    }
+
+    @Test
+    void memberHistoryTest() {
+
+        Member member = new Member();
+        member.setEmail("5555@gmail.com");
+        member.setName("Roy");
+
+        memberRepository.save(member);
+
+        member.setName("newRoy");
+
+        memberRepository.save(member);
+
+        memberHistoryRepository.findAll().forEach(System.out::println);
 
     }
 
