@@ -2,34 +2,20 @@ package com.personal.jpa.domain;
 
 import com.personal.jpa.domain.listener.Auditable;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import javax.persistence.*;
+import javax.persistence.EntityListeners;
+import javax.persistence.MappedSuperclass;
 import java.time.LocalDateTime;
 
-
-@Entity
-@NoArgsConstructor
 @Data
-@ToString(callSuper = true)
-@EqualsAndHashCode(callSuper = true)
+@MappedSuperclass       // 해당 class 의 필드를 -> 상속받는 Entity 의 Column 으로 포함시켜준다.
 @EntityListeners(value = AuditingEntityListener.class)
-public class Book extends BaseEntity {
-
-    @Id
-    @GeneratedValue
-    private Long id;
-
-    private String name;
-    private String author;
-    @CreatedDate
+public class BaseEntity implements Auditable {
+    @CreatedDate    // 자동으로 생성 시간값을 생성해주는 annotation
     private LocalDateTime createdAt;
-    @LastModifiedDate
+    @LastModifiedDate   // 자동으로 수정 시간값을 생성해주는 annotation
     private LocalDateTime updatedAt;
-
 }

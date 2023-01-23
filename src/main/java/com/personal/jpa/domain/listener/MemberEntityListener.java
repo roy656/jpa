@@ -1,6 +1,8 @@
-package com.personal.jpa.domain;
+package com.personal.jpa.domain.listener;
 
 
+import com.personal.jpa.domain.Member;
+import com.personal.jpa.domain.MemberHistory;
 import com.personal.jpa.repository.MemberHistoryRepository;
 import com.personal.jpa.support.BeanUtils;
 import lombok.NoArgsConstructor;

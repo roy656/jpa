@@ -133,7 +133,7 @@ class MemberRepositoryTest {
     void enumTest() {
 
         Member member = memberRepository.findById(1L).orElseThrow(NullPointerException::new);
-//        member.setGender(Gender.MALE);
+        member.setGender(Gender.MALE);
 
         memberRepository.save(member);
 

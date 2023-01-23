@@ -1,4 +1,4 @@
-package com.personal.jpa.domain;
+package com.personal.jpa.domain.listener;
 
 import java.time.LocalDateTime;
 
