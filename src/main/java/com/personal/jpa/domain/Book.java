@@ -27,9 +27,5 @@ public class Book extends BaseEntity {
 
     private String name;
     private String author;
-    @CreatedDate
-    private LocalDateTime createdAt;
-    @LastModifiedDate
-    private LocalDateTime updatedAt;
 
 }
