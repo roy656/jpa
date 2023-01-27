@@ -162,6 +162,7 @@ class MemberRepositoryTest {
         Member member = new Member();
         member.setEmail("5555@gmail.com");
         member.setName("Roy");
+        member.setGender(Gender.MALE);
 
         memberRepository.save(member);
 
